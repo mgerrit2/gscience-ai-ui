@@ -2,3 +2,43 @@
 <main class="content">
   <router-outlet />
 </main>
+
+<p-dialog
+  header="About Stock Management"
+  [(visible)]="displayAbout"
+  [modal]="true"
+  [style]="{ width: '25vw' }"
+  class="p-dialog-mobile"
+  [draggable]="false"
+  [resizable]="false">
+
+  <div class="flex flex-col items-center p-4">
+    <i class="pi pi-id-card text-5xl mb-4 text-blue-500"></i>
+    <p><strong>Version:</strong> 1.0.0</p>
+    <p><strong>System:</strong> Stock Management UI</p>
+
+    <p class="mt-2">
+      <i class="pi pi-user text-sm mr-1"></i>
+      <strong>Designer:</strong> Gerrits Marc
+    </p>
+    <div class="mt-2">
+      <img [src]="getFullImageUrl('Flag_of_Diepenbeek.svg.png')"
+           alt="Default user profile avatar"
+           [width]="50"
+           [height]="50"
+      />
+    </div>
+
+    <hr class="w-full my-2">
+    <p class="text-sm text-gray-600">© 2026 G-Science Security</p>
+  </div>
+
+  <ng-template #footer>
+    <p-button
+      label="Close"
+      icon="pi pi-check"
+      (onClick)="displayAbout = false"
+      severity="secondary">
+    </p-button>
+  </ng-template>
+</p-dialog>
