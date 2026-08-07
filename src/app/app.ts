@@ -27,6 +27,17 @@ export class App implements OnInit {
         routerLink: ['/app-home'],
       },
       {
+        label: 'AI models',
+        icon: 'pi pi-sparkles',
+        items: [
+          {
+            label: 'Classefy Dogs and Cats',
+            icon: 'pi pi-tags',
+            routerLink: ['/app-person'],
+          },
+        ],
+      },
+      {
         label: 'Help',
         icon: 'pi pi-question-circle',
         visible: true,
@@ -39,7 +50,7 @@ export class App implements OnInit {
             },
           },
         ],
-      }
+      },
     ];
   }
 
