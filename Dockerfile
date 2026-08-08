@@ -20,6 +20,11 @@ RUN rm -rf /usr/share/nginx/html/*
 # Kopieer de gebouwde bestanden (inhoud van nl-BE) naar de Nginx root
 COPY --from=build /app/dist/gscience-ai-ui/browser/. /usr/share/nginx/html/
 
+# Rename index.csr.html to index.html so Nginx finds it as the root index
+RUN if [ -f /usr/share/nginx/html/index.csr.html ]; then \
+      mv /usr/share/nginx/html/index.csr.html /usr/share/nginx/html/index.html; \
+    fi
+
 # Kopieer je aangepaste nginx configuratie
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
