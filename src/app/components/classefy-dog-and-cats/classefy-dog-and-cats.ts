@@ -1,5 +1,5 @@
 import { Component, ElementRef, inject, ViewChild } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import { SafeUrl } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { AnimalClassifyerRes } from '../../res/animal-classifyer-res';

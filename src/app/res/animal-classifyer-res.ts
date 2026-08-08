@@ -7,7 +7,7 @@ import { environment } from '../environments/environment';
   providedIn: 'root',
 })
 export class AnimalClassifyerRes {
-  private readonly http = inject(HttpClient);
+
   private readonly classUrl = '/animals';
 
   /**
