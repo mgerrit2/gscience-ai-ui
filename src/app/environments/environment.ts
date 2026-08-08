@@ -1,6 +1,4 @@
 export const environment = {
-  authEnable: true,
   production: false,
-  apiUrl: '/api', // 👈 Change this to use the proxy path!
-  apiGscieneProgrammingHelpUrl: 'http://localhost:8090/gscience-programming-help'
+  apiFastApiUrl: 'http://127.0.0.1:8000',
 };

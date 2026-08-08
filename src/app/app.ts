@@ -33,7 +33,7 @@ export class App implements OnInit {
           {
             label: 'Classefy Dogs and Cats',
             icon: 'pi pi-tags',
-            routerLink: ['/app-person'],
+            routerLink: ['/app-classefy-dog-and-cats'],
           },
         ],
       },
