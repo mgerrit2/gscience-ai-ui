@@ -4,10 +4,18 @@ import { SafeUrl } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { AnimalClassifyerRes } from '../../res/animal-classifyer-res';
 import { InputTextModule } from 'primeng/inputtext';
+import { TextareaModule } from 'primeng/textarea';
+import { FloatLabel } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-classefy-dog-and-cats',
-  imports: [ReactiveFormsModule, ButtonModule, InputTextModule],
+  imports: [
+    ReactiveFormsModule,
+    ButtonModule,
+    InputTextModule,
+    TextareaModule,
+    FloatLabel
+  ],
   templateUrl: './classefy-dog-and-cats.html',
   styleUrl: './classefy-dog-and-cats.scss',
 })
@@ -26,12 +34,18 @@ export class ClassefyDogAndCats {
 
   form = new FormGroup({
     topPrediction: new FormControl(''),
+    allPrediction: new FormControl(''),
   });
 
   //region getters for formcontrol
   get getTopPrediction(): FormControl {
     // We cast it to FormControl to easily access its value property later
     return this.form.get('topPrediction') as FormControl;
+  }
+
+  get getAllPrediction(): FormControl {
+    // We cast it to FormControl to easily access its value property later
+    return this.form.get('allPrediction') as FormControl;
   }
   //endregion
 
@@ -48,7 +62,8 @@ export class ClassefyDogAndCats {
       this.pictureDefault = false;
 
       // clear prediction
-      this.getTopPrediction.setValue("");
+      this.getTopPrediction.setValue('');
+      this.getAllPrediction.setValue('');
 
       console.log('file:' + file.name + ' is loaded');
 
@@ -89,6 +104,7 @@ export class ClassefyDogAndCats {
 
       // 3. Set the text label into your Reactive Form Input
       this.getTopPrediction.setValue(topLabel);
+      this.getAllPrediction.setValue(JSON.stringify(result.predictions));
 
       console.log('Classification Result:', JSON.stringify(result));
     } catch (error: any) {
