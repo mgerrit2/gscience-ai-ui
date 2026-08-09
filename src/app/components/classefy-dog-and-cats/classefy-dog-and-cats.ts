@@ -6,7 +6,13 @@ import { AnimalClassifyerRes } from '../../res/animal-classifyer-res';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { FloatLabel } from 'primeng/floatlabel';
-import { AccordionModule } from 'primeng/accordion';
+import {
+  Accordion,
+  AccordionContent,
+  AccordionHeader,
+  AccordionModule,
+  AccordionPanel,
+} from 'primeng/accordion';
 
 @Component({
   selector: 'app-classefy-dog-and-cats',
@@ -16,6 +22,10 @@ import { AccordionModule } from 'primeng/accordion';
     InputTextModule,
     TextareaModule,
     FloatLabel,
+    Accordion,
+    AccordionPanel,
+    AccordionHeader,
+    AccordionContent,
     AccordionModule,
   ],
   templateUrl: './classefy-dog-and-cats.html',
