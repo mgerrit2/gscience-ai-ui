@@ -46,7 +46,12 @@
             }
           },
           "configurations": {
-            "production": {
+            "development-localhost": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            },
+            "production-server": {
               "budgets": [
                 {
                   "type": "initial",
@@ -61,7 +66,7 @@
               ],
               "outputHashing": "all"
             },
-            "development": {
+            "development-server": {
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
@@ -78,11 +83,14 @@
         "serve": {
           "builder": "@angular/build:dev-server",
           "configurations": {
-            "production": {
+            "production-server": {
               "buildTarget": "gscience-ai-ui:build:production"
             },
-            "development": {
+            "development-server": {
               "buildTarget": "gscience-ai-ui:build:development"
+            },
+            "development-localhost": {
+              "buildTarget": "gscience-ai-ui:build:development-localhost"
             }
           },
           "defaultConfiguration": "development"
