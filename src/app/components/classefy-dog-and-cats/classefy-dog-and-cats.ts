@@ -6,6 +6,7 @@ import { AnimalClassifyerRes } from '../../res/animal-classifyer-res';
 import { InputTextModule } from 'primeng/inputtext';
 import { TextareaModule } from 'primeng/textarea';
 import { FloatLabel } from 'primeng/floatlabel';
+import { AccordionModule } from 'primeng/accordion';
 
 @Component({
   selector: 'app-classefy-dog-and-cats',
@@ -14,7 +15,8 @@ import { FloatLabel } from 'primeng/floatlabel';
     ButtonModule,
     InputTextModule,
     TextareaModule,
-    FloatLabel
+    FloatLabel,
+    AccordionModule,
   ],
   templateUrl: './classefy-dog-and-cats.html',
   styleUrl: './classefy-dog-and-cats.scss',
@@ -53,11 +55,11 @@ export class ClassefyDogAndCats {
    * get the picture file, and transform to base64 string
    * @protected
    */
-  protected async handleFileInput() {
-    const files: FileList | null = this.fileInputRef.nativeElement.files;
+  async handleFileInput(event: Event): Promise<void> {
+    const input = event.target as HTMLInputElement;
 
-    if (files && files.length > 0) {
-      const file = files[0];
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
 
       this.pictureDefault = false;
 
@@ -67,17 +69,22 @@ export class ClassefyDogAndCats {
 
       console.log('file:' + file.name + ' is loaded');
 
-      // Use FileReader to convert the file into a data URL (Base64 string)
-      const reader = new FileReader();
+      // 1. Wait for the file to be read completely into memory
+      await new Promise<void>((resolve, reject) => {
+        const reader = new FileReader();
 
-      reader.onload = () => {
-        // Set the imageBytes property and update the display flag
-        this.imageBytes = this.imageBytes = reader.result as string;
-        this.filePictureToUpload = files.item(0);
-      };
+        reader.onload = () => {
+          this.imageBytes = reader.result as string;
+          this.filePictureToUpload = file;
+          resolve(); // File reading is done!
+        };
 
-      // Start reading the file as a data URL
-      reader.readAsDataURL(file);
+        reader.onerror = (error) => reject(error);
+
+        reader.readAsDataURL(file);
+      });
+
+      await this.checkWhichAnimal();
     }
   }
 
