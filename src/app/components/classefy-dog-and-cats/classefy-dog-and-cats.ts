@@ -47,6 +47,9 @@ export class ClassefyDogAndCats {
 
       this.pictureDefault = false;
 
+      // clear prediction
+      this.getTopPrediction.setValue("");
+
       console.log('file:' + file.name + ' is loaded');
 
       // Use FileReader to convert the file into a data URL (Base64 string)
