@@ -20,11 +20,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
     provideClientHydration(withEventReplay()),
-    provideHttpClient(
-      withInterceptors([
-        ajaxBusyInterceptorInterceptor,
-      ])
-    ),
+    provideHttpClient(withInterceptors([ajaxBusyInterceptorInterceptor])),
     providePrimeNG({
       theme: {
         preset: Aura, // Available presets: Aura, Lara, Nora
