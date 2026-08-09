@@ -1,45 +1,48 @@
 <p-menubar [model]="items" />
 <main class="content">
   <router-outlet />
+  <app-spinner></app-spinner>
 </main>
 
-<p-dialog
-  header="Learning AI Models"
-  [(visible)]="displayAbout"
-  [modal]="true"
-  [style]="{ width: '300px' }"
-  class="p-dialog-mobile"
-  [draggable]="false"
-  [resizable]="false">
+@if (isBrowser) {
+  <p-dialog
+    header="Learning AI Models"
+    [(visible)]="displayAbout"
+    [modal]="true"
+    [style]="{ width: '300px' }"
+    class="p-dialog-mobile"
+    [draggable]="false"
+    [resizable]="false">
 
-  <div class="flex flex-col items-center p-4">
-    <i class="pi pi-id-card text-5xl mb-4 text-blue-500"></i>
-    <p><strong>Version:</strong> 1.0.0</p>
+    <div class="flex flex-col items-center p-4">
+      <i class="pi pi-id-card text-5xl mb-4 text-blue-500"></i>
+      <p><strong>Version:</strong> 1.0.0</p>
 
-    <p class="mt-2">
-      <i class="pi pi-user text-sm mr-1"></i>
-      <strong>Designer:</strong> Gerrits Marc
-    </p>
+      <p class="mt-2">
+        <i class="pi pi-user text-sm mr-1"></i>
+        <strong>Designer:</strong> Gerrits Marc
+      </p>
 
-    <!-- Image Container -->
-    <div class="mt-2 flex justify-center items-center w-full">
-      <img [src]="getFullImageUrl('Flag_of_Diepenbeek.svg.png')"
-           alt="Default user profile avatar"
-           width="70"
-           height="50"
-           style="display: block; margin: 0 auto;" />
+      <!-- Image Container -->
+      <div class="mt-2 flex justify-center items-center w-full">
+        <img [src]="getFullImageUrl('Flag_of_Diepenbeek.svg.png')"
+             alt="Default user profile avatar"
+             width="70"
+             height="50"
+             style="display: block; margin: 0 auto;" />
+      </div>
+
+      <hr class="w-full my-2">
+      <p class="text-sm text-gray-600">© 2026 G-Science AI</p>
     </div>
 
-    <hr class="w-full my-2">
-    <p class="text-sm text-gray-600">© 2026 G-Science AI</p>
-  </div>
-
-  <ng-template #footer>
-    <p-button
-      label="Close"
-      icon="pi pi-check"
-      (onClick)="displayAbout = false"
-      severity="secondary">
-    </p-button>
-  </ng-template>
-</p-dialog>
+    <ng-template #footer>
+      <p-button
+        label="Close"
+        icon="pi pi-check"
+        (onClick)="displayAbout = false"
+        severity="secondary">
+      </p-button>
+    </ng-template>
+  </p-dialog>
+}

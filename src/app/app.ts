@@ -1,20 +1,24 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, OnInit, signal, PLATFORM_ID, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { ToolbarModule } from 'primeng/toolbar';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
+import { Spinner } from './components/spinners/spinner/spinner';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ToolbarModule, ButtonModule, MenubarModule, Dialog],
+  imports: [RouterOutlet, ToolbarModule, ButtonModule, MenubarModule, Dialog, Spinner],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
 export class App implements OnInit {
   protected readonly title = signal('gscience-ai-ui');
+
+  isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   items: MenuItem[] | undefined;
   protected displayAbout: boolean = false;
@@ -77,5 +81,4 @@ export class App implements OnInit {
     // 4. Remove any leading slash to keep it relative
     return path.startsWith('/') ? path.substring(1) : path;
   }
-
 }
