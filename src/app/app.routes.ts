@@ -1,5 +1,6 @@
 import { Routes } from '@angular/router';
 import { ClassefyDogAndCats } from './components/classefy-dog-and-cats/classefy-dog-and-cats';
+import { Statistics } from './components/Statistics/statistics/statistics';
 
 export const routes: Routes = [
   {
@@ -10,5 +11,9 @@ export const routes: Routes = [
   {
     path: 'app-classefy-dog-and-cats',
     component: ClassefyDogAndCats,
+  },
+  {
+    path: 'app-statistics',
+    component: Statistics,
   },
 ];

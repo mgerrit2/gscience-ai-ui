@@ -35,11 +35,16 @@ export class App implements OnInit {
         icon: 'pi pi-sparkles',
         items: [
           {
-            label: 'Classefy Dogs and Cats',
+            label: 'Classify Dogs and Cats',
             icon: 'pi pi-tags',
             routerLink: ['/app-classefy-dog-and-cats'],
           },
         ],
+      },
+      {
+        label: 'Statistics',
+        icon: 'pi pi-chart-line',
+        routerLink: ['/app-statistics'],
       },
       {
         label: 'Help',
