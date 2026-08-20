@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 import { ClassefyDogAndCats } from './components/classefy-dog-and-cats/classefy-dog-and-cats';
-import { Statistics } from './components/statistics/statistics/statistics';
+import { Statistics } from './components/statistics/statistics';
 
 export const routes: Routes = [
   {
