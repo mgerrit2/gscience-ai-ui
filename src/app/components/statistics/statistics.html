@@ -1,0 +1,9 @@
+<div class="stats-container" style="display: flex; justify-content: center; align-items: center; width: 100%; min-height: 400px; padding: 2rem;">
+  @if (stats()) {
+    <div style="width: 100%; max-width: 450px; height: 350px;">
+      <p-chart type="pie" [data]="chartData" [options]="chartOptions" />
+    </div>
+  } @else {
+    <p>Loading graphics...</p>
+  }
+</div>
