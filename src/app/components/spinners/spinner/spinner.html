@@ -1,6 +1,9 @@
-
 @if(showSpinner()){
-      <div class="spinner-overlay" >
-      <p-progressSpinner></p-progressSpinner>
-      </div>
+  <div class="loading-container">
+    <p-progressSpinner
+      strokeWidth="4"
+      animationDuration=".8s">
+    </p-progressSpinner>
+    <p class="loading-text">Loading Python environment (initial load may take up to 50 seconds)...</p>
+  </div>
 }
