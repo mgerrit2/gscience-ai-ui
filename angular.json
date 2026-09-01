@@ -67,6 +67,9 @@
               "outputHashing": "all"
             },
             "development-server": {
+              "ssr": false,
+              "prerender": false,
+              "outputHashing": "all",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,
