@@ -9,6 +9,9 @@
             class="img-fluid rounded shadow-sm"
             [width]="200"
             [height]="200"
+            (dragover)="$event.preventDefault()"
+            (dragenter)="$event.preventDefault()"
+            (drop)="onFileDropped($event)"
           />
         } @else {
           <img [src]="imageBytes"
@@ -16,6 +19,9 @@
                [height]="200"
                class="img-fluid rounded shadow-sm object-fit-cover"
                alt="byte profile"
+               (dragover)="$event.preventDefault()"
+               (dragenter)="$event.preventDefault()"
+               (drop)="onFileDropped($event)"
           />
         }
       </div>

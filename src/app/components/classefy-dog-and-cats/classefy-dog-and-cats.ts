@@ -49,6 +49,51 @@ export class ClassefyDogAndCats {
     allPrediction: new FormControl(''),
   });
 
+  onFileDropped(event: DragEvent): void {
+    event.preventDefault();
+    event.stopPropagation();
+
+    const files = event.dataTransfer?.files;
+    if (files && files.length > 0) {
+      const file = files[0];
+
+      // Optional: Validate that the file is an image
+      if (!file.type.match('image.*')) {
+        alert('Please drop an image file.');
+        return;
+      }
+
+      this.handleImageFile(file);
+    }
+  }
+
+  async handleImageFile(file: File): Promise<void> {
+    this.pictureDefault = false;
+
+    // clear prediction
+    this.getTopPrediction.setValue('');
+    this.getAllPrediction.setValue('');
+
+    console.log('file:' + file.name + ' is loaded via drag and drop');
+
+    // 1. Wait for the file to be read completely into memory
+    await new Promise<void>((resolve, reject) => {
+      const reader = new FileReader();
+
+      reader.onload = () => {
+        this.imageBytes = reader.result as string;
+        this.filePictureToUpload = file;
+        resolve(); // File reading is done!
+      };
+
+      reader.onerror = (error) => reject(error);
+
+      reader.readAsDataURL(file);
+    });
+
+    // 2. Automatically run classification
+    await this.checkWhichAnimal();
+  }
   //region getters for formcontrol
   get getTopPrediction(): FormControl {
     // We cast it to FormControl to easily access its value property later
