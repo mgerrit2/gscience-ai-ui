@@ -9,7 +9,7 @@
     "build-dev": "ng build --configuration development-server",
     "test": "ng test",
     "serve:ssr:gscience-ai-ui": "node dist/gscience-ai-ui/server/server.mjs",
-    "e2e:dev": "playwright test --ui"
+    "e2e:dev": "playwright test --headed"
   },
   "private": true,
   "packageManager": "npm@10.8.2",
