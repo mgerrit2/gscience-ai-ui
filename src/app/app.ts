@@ -6,7 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { MenuItem } from 'primeng/api';
 import { Dialog } from 'primeng/dialog';
 import { Spinner } from './components/spinners/spinner/spinner';
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, isPlatformServer } from '@angular/common';
 
 
 @Component({
@@ -20,10 +20,17 @@ export class App implements OnInit {
 
   isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
+  // Inside your component or service:
+  private platformId = inject(PLATFORM_ID);
+
   items: MenuItem[] | undefined;
   protected displayAbout: boolean = false;
 
   ngOnInit() {
+    if (isPlatformServer(this.platformId)) {
+      return; // Skip making live API calls during SSR build/prerender
+    }
+
     this.items = [
       {
         label: 'Home',
