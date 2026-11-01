@@ -4,7 +4,7 @@ services:
     container_name: gscience-ai-ui
     build: .
     ports:
-      - "80:80" # Bezoek je app op http://localhost
+      - "10000:80" # Bezoek je app op http://localhost
     networks:
       - app-network
     restart: unless-stopped
