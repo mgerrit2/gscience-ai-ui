@@ -1,10 +1,10 @@
 # Stage 1: Build de Angular app
-FROM node:20-alpine AS build
+FROM node:24-alpine AS build
 WORKDIR /app
 
 # Kopieer package files en installeer dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm ci
 
 # Kopieer de rest van de code en bouw de app
 COPY . .
@@ -28,7 +28,10 @@ RUN if [ -f /usr/share/nginx/html/index.csr.html ]; then \
 # Kopieer je aangepaste nginx configuratie
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-EXPOSE 80
+EXPOSE 10000
+
+
+CMD ["nginx", "-g", "daemon off;"]
 
 
 
