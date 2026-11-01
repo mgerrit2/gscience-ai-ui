@@ -30,7 +30,6 @@ export class App implements OnInit {
     if (isPlatformServer(this.platformId)) {
       return; // Skip making live API calls during SSR build/prerender
     }
-
     this.items = [
       {
         label: 'Home',
